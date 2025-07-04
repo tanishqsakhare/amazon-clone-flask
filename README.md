@@ -94,10 +94,9 @@ flask run
 
 ## 🔗 Social Links
 
-[Insert your video link here]
-[LinkedIn](https://www.linkedin.com/in/tanishqsakhare)
-[GitHub](https://github.com/tanishqsakhare)
-tanishqsakhare@gmail.com
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/tanishqsakhare)
+[![GitHub](https://img.shields.io/badge/GitHub-black?style=for-the-badge&logo=github)](https://github.com/tanishqsakhare)
+[![Gmail](https://img.shields.io/badge/Gmail-red?style=for-the-badge&logo=gmail)](mailto:tanishqsakhare@gmail.com)
 
 ---
 
