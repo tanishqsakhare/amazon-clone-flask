@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>{{ category }} Products</h2>
+  <div class="product-grid">
+    {% for product in products %}
+      <!-- Your product card layout -->
+    {% endfor %}
+  </div>
+{% endblock %}

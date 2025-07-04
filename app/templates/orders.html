@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container" style="max-width: 800px; margin: 40px auto;">
+  <h2>📦 Your Orders</h2>
+
+  {% if orders %}
+    <p>You have placed <strong>{{ orders|length }}</strong> order{{ 's' if orders|length > 1 else '' }}.</p>
+
+    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+      <thead>
+        <tr style="background-color: #f2f2f2;">
+          <th style="padding: 10px;">Order ID</th>
+          <th style="padding: 10px;">Items</th>
+          <th style="padding: 10px;">Total</th>
+          <th style="padding: 10px;">Placed On</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in orders %}
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 10px;">{{ order.order_id }}</td>
+          <td style="padding: 10px;">
+            <ul style="padding-left: 20px;">
+              {% for pid, item in order.cart_items.items() %}
+              <li>{{ item.name }} × {{ item.quantity }}</li>
+              {% endfor %}
+            </ul>
+          </td>
+          <td style="padding: 10px;">₹{{ order.total }}</td>
+          <td style="padding: 10px;">{{ order.timestamp.strftime('%d %b %Y, %I:%M %p') }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>You haven't placed any orders yet.</p>
+  {% endif %}
+</div>
+{% endblock %}

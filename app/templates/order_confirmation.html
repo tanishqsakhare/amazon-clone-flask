@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container" style="text-align: center;">
+  <div id="success-animation" style="width: 200px; height: 200px; margin: 0 auto;"></div>
+
+  <h2>🎉 Thank You!</h2>
+  <p>Your order has been placed successfully.</p>
+  <a href="{{ url_for('main.home') }}">Continue Shopping</a>
+</div>
+{% endblock %}

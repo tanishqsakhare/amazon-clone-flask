@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container" style="max-width: 700px; margin: 40px auto;">
+  <h2>🎉 Thank you for your order, {{ order.name }}!</h2>
+  <p>Your order has been placed successfully.</p>
+
+  <h3>📦 Order Summary</h3>
+  <p><strong>Order ID:</strong> {{ order_id }}</p>
+  <p><strong>Placed on:</strong> {{ timestamp.strftime('%d %B %Y, %I:%M %p') }}</p>
+
+  <ul style="margin-bottom: 20px;">
+    {% for product_id, item in order.cart.items() %}
+      <li>{{ item['name'] }} × {{ item['quantity'] }} — ₹{{ item['price'] * item['quantity'] }}</li>
+    {% endfor %}
+  </ul>
+
+  <p><strong>Total:</strong> ₹{{ total }}</p>
+  <p><strong>Delivery Address:</strong> {{ order.address }}</p>
+  <p><strong>Payment Method:</strong> {{ order.payment_method|capitalize }}</p>
+
+  <a href="{{ url_for('main.home') }}" class="cta-button" style="margin-top: 20px;">Continue Shopping</a>
+</div>
+{% endblock %}

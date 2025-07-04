@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container" style="text-align: center; margin-top: 100px;">
+  <h2>Processing Payment...</h2>
+  <lottie-player
+    src="https://assets10.lottiefiles.com/packages/lf20_j1adxtyb.json"
+    background="transparent"
+    speed="1"
+    style="width: 200px; height: 200px; margin: 20px auto;"
+    autoplay
+  ></lottie-player>
+
+  <p>Please wait while we confirm your order.</p>
+</div>
+
+<script>
+  setTimeout(() => {
+    window.location.href = "{{ url_for('main.order_success') }}";
+  }, 3000); // 3 seconds delay
+</script>
+{% endblock %}

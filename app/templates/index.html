@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Hero Banner with Carousel -->
+<div class="hero-banner">
+  <div class="hero-carousel">
+
+    <!-- Slide 1 -->
+<div class="carousel-slide active">
+  <div class="banner-content">
+    <div class="banner-left">
+      <h1>Big Deals on Top Brands 🔥</h1>
+      <p>Shop the latest gadgets, accessories, and more at unbeatable prices.</p>
+      <a href="#products" class="cta-button">Shop Now</a>
+    </div>
+    <div class="banner-right">
+      <img src="{{ url_for('static', filename='images/banner1.jpg') }}" alt="Banner 1">
+    </div>
+  </div>
+</div>
+
+<!-- Slide 2 -->
+<div class="carousel-slide">
+  <div class="banner-content">
+    <div class="banner-left">
+      <h1>Under ₹1,499 🎧</h1>
+      <p>Budget-friendly headphones from Boat & Boult with 10% bank savings.</p>
+      <a href="#products" class="cta-button">Shop Now</a>
+    </div>
+    <div class="banner-right">
+      <img src="{{ url_for('static', filename='images/banner2.jpg') }}" alt="Banner 2">
+    </div>
+  </div>
+</div>
+
+<!-- Slide 3 -->
+<div class="carousel-slide">
+  <div class="banner-content">
+    <div class="banner-left">
+      <h1>Prime Day is Coming 🚀</h1>
+      <p>Get ready for exclusive deals from 12–14 July.</p>
+      <a href="#products" class="cta-button">Shop Now</a>
+    </div>
+    <div class="banner-right">
+      <img src="{{ url_for('static', filename='images/banner3.jpg') }}" alt="Banner 3">
+    </div>
+  </div>
+</div>
+
+
+    <!-- Arrows -->
+    <button class="carousel-arrow left" onclick="changeSlide(-1)">❮</button>
+    <button class="carousel-arrow right" onclick="changeSlide(1)">❯</button>
+  </div>
+</div>
+
+<!-- Optional Lottie animation -->
+<div id="hero-animation" style="width: 200px; height: 200px; margin: 20px auto;"></div>
+
+<canvas id="confetti"></canvas>
+
+  <!-- Product Grid -->
+  <section class="product-section">
+    <h2 style="text-align: center;">
+      🛒 {{ selected_category if selected_category else "Our Products" }}
+    </h2>
+
+    {% if products %}
+      <div class="product-grid">
+        {% for product in products %}
+          <div class="product-card">
+            <img src="{{ url_for('static', filename='images/' + product.image) }}" alt="{{ product.name }}">
+            <h3>{{ product.name }}</h3>
+            <p>₹{{ product.price }}</p>
+            <div>
+              <a href="{{ url_for('main.product_detail', product_id=product.id) }}">
+                <button class="view-btn">View</button>
+              </a>
+              <form action="{{ url_for('main.add_to_cart', product_id=product.id) }}" method="POST" style="display: inline;">
+                <button type="submit" class="buy-btn">Buy Now</button>
+              </form>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p style="text-align: center; font-size: 1.2rem;">No products available in this category.</p>
+    {% endif %}
+  </section>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<!-- GSAP for animations -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<!-- Optional: Lottie animation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.0/lottie.min.js"></script>
+<script>
+  lottie.loadAnimation({
+    container: document.getElementById('hero-animation'),
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: 'https://assets10.lottiefiles.com/packages/lf20_jcikwtux.json'
+  });
+</script>
+
+<!-- Carousel Script -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+
+    function changeSlide(direction) {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + direction + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }
+
+    // Make changeSlide globally accessible
+    window.changeSlide = changeSlide;
+  });
+</script>
+
+<!-- Custom animation script -->
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}
