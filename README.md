@@ -100,8 +100,9 @@ flask run
 
 ---
 
-## 🛡️ License 
+## 📬 Contact
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+Made with ❤️ by [@tanishqsakhare](https://github.com/tanishqsakhare)  
+Feel free to ⭐ star, 🍴 fork, or contribute to the project!
 
 ---
