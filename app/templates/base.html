@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Amazon Clone</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="https://unpkg.com/lottie-web@5.7.4/build/player/lottie.min.js"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+</head>
+<body>
+
+  <header class="main-header">
+    <!-- Mega Navigation Bar -->
+    <div class="utility-bar">
+      <div class="logo">
+        <a href="{{ url_for('main.home') }}">🛍️ Amazon Clone</a>
+      </div>
+
+      <div class="location">
+        <span>📍 Deliver to</span>
+        <strong>India</strong>
+      </div>
+
+      <form class="search-bar" action="#" method="GET">
+        <select name="category">
+          <option value="all">All</option>
+          <option value="electronics">Electronics</option>
+          <option value="fashion">Fashion</option>
+          <option value="home">Home</option>
+        </select>
+        <input type="text" placeholder="Search Amazon Clone..." name="q" />
+        <button type="submit">🔍</button>
+      </form>
+
+      <div class="nav-actions">
+        <div class="dropdown">
+          <button class="dropbtn">🌐 EN</button>
+          <div class="dropdown-content">
+            <a href="#">English</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button class="dropbtn">👤 Account</button>
+          <div class="dropdown-content">
+            {% if current_user.is_authenticated %}
+              <a href="{{ url_for('main.order_history') }}">Your Orders</a>
+              <a href="{{ url_for('main.logout') }}">Logout</a>
+            {% else %}
+              <a href="{{ url_for('main.login') }}">Login</a>
+              <a href="{{ url_for('main.register') }}">Register</a>
+            {% endif %}
+          </div>
+        </div>
+
+        <a href="{{ url_for('main.cart') }}">🛒 Cart</a>
+      </div>
+    </div>
+
+    <!-- ☰ Category Toggle Button (Mobile) -->
+    <button id="toggle-categories" class="toggle-btn">☰ Categories</button>
+
+    <!-- Category Navigation -->
+    <nav class="category-nav" id="category-menu">
+      <ul>
+        <li><a href="{{ url_for('main.filter_by_category', category='Mobiles') }}">Mobiles</a></li>
+        <li><a href="{{ url_for('main.filter_by_category', category='Fashion') }}">Fashion</a></li>
+        <li><a href="{{ url_for('main.filter_by_category', category='Electronics') }}">Electronics</a></li>
+        <li><a href="{{ url_for('main.filter_by_category', category='Home') }}">Home</a></li>
+        <li><a href="{{ url_for('main.filter_by_category', category='Appliances') }}">Appliances</a></li>
+        <li><a href="{{ url_for('main.filter_by_category', category='Books') }}">Books</a></li>
+        <li><a href="{{ url_for('main.filter_by_category', category='Deals') }}">Deals</a></li>
+        <li><a href="{{ url_for('main.filter_by_category', category='Laptops') }}">Laptops</a></li>
+        <li><a href="{{ url_for('main.filter_by_category', category='Gaming') }}">Gaming</a></li>
+        <li><a href="{{ url_for('main.filter_by_category', category='Kitchen') }}">Kitchen</a></li>
+        <li><a href="{{ url_for('main.filter_by_category', category='Fitness') }}">Fitness</a></li>
+        <li><a href="{{ url_for('main.filter_by_category', category='Stationery') }}">Stationery</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flashes">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-content">
+      <p>&copy; {{ current_year or 2025 }} Amazon Clone by Tanishq Sakhare. All rights reserved.</p>
+
+      <!-- Newsletter Signup -->
+      <form class="newsletter-form" action="{{ url_for('main.subscribe') }}" method="POST">
+          <label for="email">Subscribe for updates:</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+      </form>
+
+      <!-- Footer Links -->
+      <div class="footer-links">
+        <a href="{{ url_for('main.privacy') }}">Privacy</a>
+        <a href="{{ url_for('main.terms') }}">Terms</a>
+        <a href="{{ url_for('main.help') }}">Help</a>
+      </div>
+
+
+      <!-- Social Icons -->
+      <div class="social-icons">
+        <a href="https://github.com/tanishqsakhare" class="icon github" target="_blank"></a>
+        <a href="https://twitter.com/___tanishq09" class="icon twitter" target="_blank"></a>
+        <a href="https://instagram.com/whatif.isay_nah" class="icon instagram" target="_blank"></a>
+        <a href="https://linkedin.com/in/tanishqsakhare" class="icon linkedin" target="_blank"></a>
+      </div>
+
+    </div>
+  </footer>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>
