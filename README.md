@@ -35,7 +35,6 @@ A full-featured e-commerce web application inspired by Amazon, built using **Fla
 
 amazon-clone-flask/ │ ├── app/ │ ├── static/ # CSS, JS, Images │ ├── templates/ # HTML templates │ ├── models.py # Database models │ ├── routes.py # Flask routes │ └── init.py # App factory │ ├── migrations/ # Flask-Migrate files ├── store.db # SQLite database ├── run.py # Entry point └── README.md
 
-
 ---
 
 ## 🚀 Getting Started
@@ -45,10 +44,65 @@ amazon-clone-flask/ │ ├── app/ │ ├── static/ # CSS, JS, Images �
 ```bash
 git clone https://github.com/yourusername/amazon-clone-flask.git
 cd amazon-clone-flask
+```
+### 2. Create and Activate a Virtual Environment
 
+```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 
+### 3. Install Dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
+### 4. Set Up the Database
+
+```bash
+flask db init
+flask db migrate -m "Initial migration"
+flask db upgrade
+```
+
+### 5. Run the Application
+
+```bash
 flask run
+```
+
+---
+
+
+## ✅ Default Routes
+
+| Route        | Description                      |
+|--------------|----------------------------------|
+| `/`          | Home page with product listings  |
+| `/login`     | User login page                  |
+| `/register`  | User registration page           |
+| `/cart`      | View and manage cart items       |
+| `/checkout`  | Place an order                   |
+| `/orders`    | View order history               |
+| `/subscribe` | Newsletter subscription          |
+| `/privacy`   | Privacy policy page              |
+| `/terms`     | Terms of service page            |
+| `/help`      | Help & FAQ page                  |
+
+---
+
+## 🔗 Social Links
+
+[Insert your video link here]
+[LinkedIn](https://www.linkedin.com/in/tanishqsakhare)
+[GitHub](https://github.com/tanishqsakhare)
+tanishqsakhare@gmail.com
+
+---
+
+## 🛡️ License 
+
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+
+---
