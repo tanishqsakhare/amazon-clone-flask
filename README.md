@@ -1,6 +1,6 @@
 # 🚀 Amazon Clone (Flask + SQLite + Responsive UI) 🛒
 
-A full-featured e-commerce web application inspired by Amazon, built using **Flask**, **SQLite**, and a fully responsive **HTML/CSS/JavaScript** frontend. This project replicates core shopping functionalities like cart management, order placement, user authentication, and more — all wrapped in a clean, modern UI.
+A full-featured e-commerce web application inspired by Amazon, built using **Flask**, **SQLite**, and a fully responsive **HTML/CSS/JavaScript** frontend. This project replicates core shopping functionalities like cart management, order placement, user authentication, and more..
 
 ---
 
