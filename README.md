@@ -31,12 +31,6 @@ A full-featured e-commerce web application inspired by Amazon, built using **Fla
 
 ---
 
-## 📂 Project Structure
-
-amazon-clone-flask/ │ ├── app/ │ ├── static/ # CSS, JS, Images │ ├── templates/ # HTML templates │ ├── models.py # Database models │ ├── routes.py # Flask routes │ └── init.py # App factory │ ├── migrations/ # Flask-Migrate files ├── store.db # SQLite database ├── run.py # Entry point └── README.md
-
----
-
 ## 🚀 Getting Started
 
 ### 1. Clone the Repository
